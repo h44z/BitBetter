@@ -24,7 +24,7 @@ The following instructions are for unix-based systems (Linux, BSD, macOS), it is
 ## Dependencies
 Aside from docker, which you also need for Bitwarden, BitBetter requires the following:
 
-* Bitwarden (tested with 1.34.0, might work on lower versions)
+* Bitwarden (tested with 1.37.0, might work on lower versions)
 * openssl (probably already installed on most Linux or WSL systems, any version should work)
 
 ## Setting up BitBetter
@@ -43,7 +43,7 @@ From the BitBetter directory, simply run:
 ./build.sh
 ```
 
-This will create a new self-signed certificate in the `.keys` directory one does not already exist and then create a modified version of the official `bitwarden/api` called `bitbetter/api` and a modified version of the `bitwarden/identity` called `bitbetter/identity`.
+This will create a new self-signed certificate in the `.keys` directory if one does not already exist and then create a modified version of the official `bitwarden/api` called `bitbetter/api` and a modified version of the `bitwarden/identity` called `bitbetter/identity`.
 
 You may now simply create the file `/path/to/bwdata/docker/docker-compose.override.yml` with the following contents to utilize the modified images.
 
@@ -87,7 +87,8 @@ To update Bitwarden, the provided `update-bitwarden.sh` script can be used. It w
 
 There is a tool included in the directory `src/licenseGen/` that will generate new individual and organization licenses. These licenses will be accepted by the modified Bitwarden because they will be signed by the certificate you generated in earlier steps.
 
-First, from the `BitBetter` directory, **build the license generator**.<sup>[2](#f2)</sup>
+
+First, from the `BitBetter/src/licenseGen` directory, **build the license generator**.<sup>[2](#f2)</sup>
 
 ```bash
 ./build.sh
